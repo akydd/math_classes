@@ -1,0 +1,321 @@
+\documentclass[12pt]{report}
+\pagestyle{plain}
+\usepackage{amsmath,amsfonts}
+
+\topmargin -0.5in
+\oddsidemargin 0.0in
+\textwidth 6.5in
+\textheight 9in
+
+\newcommand\done{\begin{flushright}$\Box$\end{flushright}}
+
+\title{Zippin's Theorem}
+\author{presented by Alan Kydd}
+\date{April 1 2004}
+
+\newtheorem{defn}{Definition}
+\newtheorem{theorem}[defn]{Theorem}
+\newtheorem{lemma}[defn]{Lemma}
+
+\begin{document}
+\maketitle
+
+\begin{defn}
+A basis $\{x_j\}$ for a Banach space $X$ is said to be equivalent to a basis
+$\{y_j\}$ for a Banach space $Y$ if there exists constants $C_1$,
+$C_2 \geq 0$ such that for any $m$ and for any real sequence of scalars $\{a_j\}_{j=1}^m$,
+$$
+\frac{1}{C_1}\left\|\sum_{j=1}^m a_j y_j \right\| \leq \left\|\sum_{j=1}^m a_j x_j \right\|
+\leq C_2 \left\|\sum_{j=1}^m a_j y_j \right\|.
+$$
+That is, the convergence of $\sum_{j=1}^\infty a_j x_j$ is equivalent to the convergence of
+$\sum_{j=1}^\infty a_j y_j$.
+\end{defn}
+
+\begin{defn}
+The sequence $\{z_j\}_{j=1}^\infty$ is called a block basis with respect to the basis
+$\{x_j\}_{j=1}^\infty$ if for every $j$, $z_j = \sum_{i=p_{j}+1}^{p_{j+1}} a_i x_i$, where
+$\{p_j\}_{j=1}^\infty$ is an increasing sequence of non negative integers.
+\end{defn}
+
+\begin{defn}
+A basis $\{x_j\}$ is called unconditional if there exists constant $C>0$ such that for every
+sequence of scalars $\{a_j\}$, and for every sequence $\{\theta_j\}$,
+where $\theta_j = \pm 1$, $\|\sum \theta_j a_j x_j\| \leq C\|\sum a_j x_j\|$.
+\end{defn}
+
+%\begin{defn}
+%A basis $\{x_j\}$ is called perfectly homogeneous if it is normalized and every
+%normalized block basis $\{z_j\}$ with respect to $\{x_j\}$ is equivalent to
+%to the basis $\{x_j\}$.
+%\end{defn}
+
+\begin{defn}
+A normalized basis $\{x_j\}$ is said to satisfy condition (A) for any two disjoint finite
+sets $U$ and $V$ of positive integers and $|s| \leq |t|$, then for every real $\{a_j\}$, $j\in U\cup V$,
+$$
+\left\| \sum_{j\in U} a_j x_j + s\sum_{j\in V} a_j x_j\right\| \leq
+\left\| \sum_{j\in U} a_j x_j + t\sum_{j\in V} a_j x_j\right\|.
+$$
+\end{defn}
+
+\begin{theorem}\label{daybook}
+Let $\{x_j\}$ be an unconditional basis for Banach space $X$.  Then $\{x_j\}$ satisfies condition (A).
+\end{theorem}
+{\it Proof:}
+See~\cite{Day} pp. 67, 68, 73.\done
+
+\begin{lemma}
+Let $\{x_j, f_j\}$ denote the biorthogonal sequence of the basis $\{x_j\}$.  If $\{x_j\}$
+satisfies condition (A), then $\|f_j\|=1$ for every $j$.
+\end{lemma}
+{\it Proof:}
+$\|f_j\| \geq f_j(x_j) = 1.$  On the other hand,
+$$
+\|f_j\| = \sup_{\|\sum_{i=1}^\infty a_i x_i\| \leq 1} \left|f_j\left(\sum_{i=1}^\infty a_i x_i\right)\right|
+= \sup_{\|\sum_{i=1}^\infty a_i x_i\| \leq 1} |a_j| \leq 1,
+$$
+since by condition (A), $|a_j| = \|a_j x_j\| \leq \|\sum_{i=1}^\infty a_i x_i \| \leq 1$.\done
+
+\begin{lemma}\label{ntimes}
+If $\{x_j\}$ is a basis in a Banach space which satisfies condition (A) and if
+$|s_j| \leq |t_j|$ for $1\leq j \leq n$, then $\|\sum_{j=1}^n s_j x_j \| \leq
+\|\sum_{j=1}^n t_j x_j \|$.
+\end{lemma}
+{\it Proof:}
+Apply condition (A) $n$ times.\done
+\pagebreak
+\begin{lemma}\label{c_o}
+Let $\{x_j\}$ be a normalized basis in a Banach space $X$ which satisfies condition (A).
+If for some $M\geq 1$, $\|\sum_{j=1}^n x_j\| \leq M$ for every $n$, then $\{x_j\}$ is
+equivalent to the unit vector basis of $c_o$.
+\end{lemma}
+{\it Proof:}
+By Lemma~\ref{ntimes},
+$$
+\max_{1\leq j \leq n} |a_j| \leq \left\|\sum_{j=1}^n a_j x_j \right\| \leq
+\left(\max_{1\leq j\leq n} |a_j| \right)\cdot\left\|\sum_{j=1}^n x_j \right\| \leq
+M\cdot\max_{1\leq j\leq n} |a_j|.
+$$
+Hence, $\sum_{j=1}^\infty a_j x_j$ converges if and only if $a_j \rightarrow 0$.\done
+
+\begin{lemma}\label{uncond}
+Let the basis $\{x_j\}$ be equivalent to all of its normalized block bases.  Then $\{x_j\}$ is
+an unconditional basis for $X$.
+\end{lemma}
+{\it Proof:}
+Notice that for any sequence $\{\theta_j\}$, where $\theta_j = \pm 1$, $\{\theta_j x_j\}$ is
+a normalized block basis of $\{x_j\}$.  An application of the Banach-Steinhaus theorem
+completes the proof.\done
+
+\begin{theorem}
+Let $X$ be a Banach space with normalized basis $\{x_j\}$.
+$\{x_j\}$ is equivalent to every normalized block basis of $\{x_n\}$ if and only if
+$X$ is isomorphic to $c_0$, or to $l_p$ for some $1\leq p < \infty$.
+
+\end{theorem}
+{\it Proof:}
+The {\it if} part is clear, since the unit vector bases in $c_0$ and $l_p$ are
+equivalent to each of their normalized block bases.
+
+Assume that the normalized basis $\{x_j\}$ is equivalent to all normalized block bases.
+By Lemma~\ref{uncond} $\{x_j\}$ is unconditional.
+By Theorem~\ref{daybook}, $\{x_j\}$ satisfies condition (A).
+
+Next, using a uniform 
+boundedness argument similar to the one used for the proof of Lemma~\ref{uncond},
+the following is proved:  there exists a constant $M$ such that for every 
+normalized block basis $\{u_j\}$ of $\{x_j\}$,
+the operator $T_u$ which exhibits the equivalence of the basic sequence (i.e. 
+$T_u x_j = u_j$ for all $j$) satisfies $\|T_u\|,\;\|T_u^{-1}\| \leq M$ or equivalently,
+\begin{equation}\label{star}
+M^{-1}\left\|\sum_{j=1}^\infty a_j x_j\right\| \leq
+\left\|T_u\left(\sum_{j=1}^\infty a_j x_j\right)\right\| 
+= \left\|\sum_{j=1}^\infty a_j u_j\right\| \leq M\left\|\sum_{j=1}^\infty a_j x_j\right\|.
+\end{equation}
+for all choices of scalars $\{a_j\}$ such that $\sum_{j=1}^\infty a_j x_j$ converges.
+
+We will give the details of the argument.
+Indeed, let $I$ denote the set of all normalized block basis with respect to $\{x_j\}$.
+For each $\{z_j\} \in I$,
+we denote by $T_z$ the operator defined by $T_z(\sum_{j=1}^\infty a_j x_j) = \sum_{j=1}^\infty a_j z_j$.
+We will show that the set $\{\|T_z\| : z\in I\}$ is finitely bounded.
+Assume the contrary.  By the theorem of
+Banach and Steinhaus, there is an $x = \sum_{j=1}^\infty b_j x_j \in X$ with $\|x\| = 1$ such that
+$\sup_{z\in I} \{\|T_z x\|\} = \sup_{z\in I} \{\|\sum_{j=1}^\infty b_j z_j\|\} = \infty$.
+Set $n_0 = 0$.
+Then we can find a $z^{(1)} = \{z^{(1)}_j\} \in I$ such that
+$\|\sum_{j=n_0 + 1}^\infty b_j z^{(1)}_j\| \geq 2$, 
+and we can pick an $n_1 > n_0$ large enough so that
+$$
+\left\|\sum_{j=n_0 +1}^{n_1} b_j z^{(1)}_j \right\| \geq 1.
+$$
+Let $z_j = z^{(1)}_j$
+for $n_0 +1\leq j\leq n_1$.  $\|\sum_{j=n_0 +1}^{n_1} b_j z_j \| \leq
+\sum_{j=n_0 +1}^{n_1} |b_j| = A_1$.
+Notice that for each $z^{(k)} \in I$,
+$$
+z^{(k)}_j = \sum_{i=p_j^{(k)} +1}^{p_{j+1}^{(k)}} a_i x_i,
+$$
+where each $\{p_i^{(k)}\}$ is a sequence of positive increasing integers.
+We can find a $z^{(2)} \in I$ such that $\|\sum_{j=n_0 +1}^\infty b_j z^{(2)}_j\| \geq A_1 + 2$ with
+$p^{(1)}_{n_1 +1} < p^{(2)}_{n_1 +1} + 1$,
+and also such that for some $n_2 > n_1$,
+$$
+\left\|\sum_{j=n_0 +1}^{n_2} b_j z_j^{(2)} \right\| \geq A_1 + 1.
+$$
+Let $z_j = z^{(2)}_j$ for $n_1 + 1 \leq j \leq n_2$.  Then we have
+$$
+\left\|\sum_{j=n_1 +1}^{n_2} b_j z_j \right\| \geq
+\left\|\sum_{j=n_0 +1}^{n_2} b_j z_j^{(2)} \right\|
+- \left\|\sum_{j=n_0 +1}^{n_1} b_j z^{(2)}_j \right\| \geq
+A_1 + 1 - \left\|\sum_{j=n_0 +1}^{n_1} b_j z^{(2)}_j \right\|\geq 1.
+$$
+Continuing in this fashion we have $\{z^{(i)}\} \subset I$ and $\{n_i\}$ a sequence of increasing positive integers
+such that
+\begin{equation*}
+z_j = 
+\begin{cases} z^{(1)}_j & \text{for $n_0 +1 \leq j\leq n_1$}\\
+z^{(2)}_j & \text{for $n_1 +1 \leq j \leq n_2$}\\
+z^{(3)}_j & \text{for $n_2 +1 \leq j \leq n_3$}\\
+& \vdots
+\end{cases}
+\end{equation*}
+\begin{equation}\label{converge}
+\left\|\sum_{j=n_i +1}^{n_{i+1}} b_j z_j \right\| \geq 1\quad \text{for all $i\geq 0$}
+\end{equation}
+\begin{equation}\label{block}
+p_{n_i + 1}^{(i)} < p_{n_i + 1}^{(i+1)} + 1 \quad\text{for all $i\geq 1$.}
+\end{equation}
+
+By~\eqref{block} the sequence $\{z_j\}$ is a normalized block basis with respect to $\{x_j\}$.
+By~\eqref{converge} $\sum_{j=1}^\infty \sum_{i=n_j +1}^{n_{j+1}} b_i z_i$ does not converge.
+Since $\{x_j\}$ is an unconditional basis,
+$\sum_{j=1}^\infty \sum_{i=n_j +1}^{n_{j+1}} b_i x_i$ does converge, contradicting the
+equivalence of $\{x_j\}$ to $\{z_j\}$.  Thus $\{\|T_z\| : z\in I\}$ is finitely bounded.
+
+The finite boundedness of the set $\{\|T^{-1}_z\| : z\in I\}$ is shown is a similar fashion.
+This establishes~\eqref{star}.
+
+Taking $u_j = x_{m_j}$ and
+\begin{equation*}
+a_j =
+\begin{cases}
+1 & \text{if $1\leq j \leq n$} \\
+0 & \text{if $j>n$}
+\end{cases}
+\end{equation*}
+in~\eqref{star} for some increasing sequence $\{m_j\}$ of positive integers, we get
+\begin{equation}\label{star-star}
+M^{-1}\left\|\sum_{j=1}^n x_j\right\| \leq \left\|\sum_{j=1}^n x_{m_j}\right\|
+\leq M\left\|\sum_{j=1}^n x_j\right\|,\;n=1,2,\ldots
+\end{equation}
+
+
+Now, we construct blocks $u_j,\;j=1,2,\ldots$ in the following way: we fix integers $n$ and $k$ and we 
+take
+\begin{eqnarray*}
+u_1 & = & \frac{x_1 + \ldots + x_{n^{k-1}}}{\|x_1 + \ldots + x_{n^{k-1}}\|}, \\
+u_2 & = & \frac{x_{n^{k-1}+1} + \ldots + x_{2n^{k-1}}}{\|x_{n^{k-1}+1} + \ldots + x_{2n^{k-1}}\|}\\
+    &\vdots
+\end{eqnarray*}
+We will use the following notation hereafter:
+$$
+\lambda(n) = \left\|\sum_{j=1}^n x_j \right\|,
+$$
+
+By applying (\ref{star}) for these blocks $\{u_j\}$ and suitably chosen $\{a_j\}$, we have that
+$$
+M^{-2}\lambda(n)\lambda(n^{k-1}) \leq \lambda(n^k) \leq M^2 \lambda(n)\lambda(n^{k-1}),\;n,k=1,2,\ldots
+$$
+It follows easily by induction on $k$ that
+\begin{equation}\label{lambda}
+M^{-2k} \lambda(n)^k \leq \lambda(n^k) \leq M^{2k}\lambda(n)^k.
+\end{equation}
+
+For any natural $N$, $n$ and $k$ let $h = h(N,n,k)$ be the non-negative integer for which
+$N^h \leq n^k < N^{h+1}$.  Thus, $h\log N \leq k\log n < (h+1)\log N$.
+
+It follows from~\eqref{lambda} and after some easy (but not obvious) calculations that
+\begin{equation}\label{log}
+\left|\frac{\log\lambda(n)}{\log n} - \frac{\log\lambda(N)}{\log N}\right|
+\leq 2\log M \left(\frac{1}{\log N} + \frac{1}{\log n}\right).
+\end{equation}
+Since $1\leq\lambda(n)\leq n$, we get that the sequence $\{\frac{\log\lambda(n)}{\log n}\}$
+converges to a limit $c$ where $0\leq c\leq 1$.
+
+Passing to a limit in~\eqref{log} as $N\rightarrow\infty$, we get
+$$
+M^{-2}n^c \leq \lambda(n) \leq M^2 n^c,\;n=1,2,\ldots.
+$$
+
+If $c=0$ we have $\lambda(n) \leq M^2$, and thus by Lemma~\ref{c_o}, $\{x_n\}$ is equivalent to
+the unit vector basis of $c_0$.
+
+If $0<c\leq 1$, set $c=1/p$ and we have
+\begin{equation}\label{l_p:1}
+M^{-2}n^{1/p} \leq \left\|\sum_{j=1}^n x_j \right\| \leq M^2 n^{1/p}.
+\end{equation}
+
+To prove equivalence between $\{x_n\}$ and the unit vector basis of $l_p$, we let $r_j,\;j=1,2,\ldots,J$
+be any positive rational numbers and assume that $r_j = k_j/k$ where $k_j$ and $k$ are
+positive integers.  It follows from \eqref{l_p:1} that
+$$
+\left\|\sum_{j=1}^J r_j^{1/p} x_j \right\| = k^{-1/p}\left\|\sum_{j=1}^J k_j^{1/p} x_j \right\|
+\geq M^{-2}k^{-1/p}\left\|\sum_{j=1}^J \left\|{\textstyle \sum_{i=1}^{k_j}} x_i \right\|x_j\right\|.
+$$
+Using again~\eqref{star} with the normalized block basis
+\[
+\begin{array}{llcllc}
+u_1 & = &{\displaystyle \frac{x_1 + \ldots + x_{k_1}}{\|x_1 + \ldots + x_{k_1}\|}}, &
+a_1 & = &\|x_1 + \ldots + x_{k_1}\|,\\
+u_2 & = &{\displaystyle \frac{x_{k_{1}+1} + \ldots + x_{k_{1}+k_{2}}}{\|x_{k_{1}+1} + \ldots + 
+x_{k_{1}+k_{2}}\|}}, &
+a_2 & = &\|x_{k_{1}+1} + \ldots + x_{k_{1}+k_{2}}\| \\
+    &\vdots
+\end{array}
+\]
+we get that
+\begin{eqnarray*}
+\left\|\sum_{j=1}^J \left\|{\textstyle \sum_{i=1}^{k_j}} x_i \right\|x_j\right\| &\geq &
+M^{-1}\left\|\sum_{j=1}^J a_j x_j \right\| \\
+& \geq & M^{-2}\left\|\sum_{j=1}^J a_j u_j \right\| =
+M^{-2}\left\|\sum_{i=1}^{\sum_{j=1}^J k_j} x_i \right\| \\
+& \geq & M^{-4}\left(\sum_{j=1}^J k_j\right)^{1/p} = M^{-4}k^{1/p}\left(\sum_{j=1}^J r_j\right)^{1/p},
+\end{eqnarray*}
+where the first inequality follows from~\eqref{star-star}, the second inequality follows
+from~\eqref{star} for a finite sequence $\{a_j\}$, the first equality follows from the
+definition of $a_j u_j$, and the third inequality follows from~\eqref{l_p:1}.
+Thus
+$$
+\left\|\sum_{j=1}^J r_j^{1/p} x_j \right\| \geq M^{-6}\left(\sum_{j=1}^J r_j \right)^{1/p}.
+$$
+It follows easily from condition (A) that for any real sequence $\{a_j\}$,
+$$
+\left\|\sum_{j=1}^J a_j  x_j \right\| \geq M^{-6}\left(\sum_{j=1}^J |a_j|^p \right)^{1/p}.
+$$
+Similar arguments show that
+$$
+\left\|\sum_{j=1}^J a_j  x_j \right\| \leq M^{6}\left(\sum_{j=1}^J |a_j|^p \right)^{1/p},
+$$
+and thus $\{x_j\}$ is equivalent to the unit vector basis of $l_p$.
+
+In both the $c_0$ and the $l_p$ case, the equivalence of $\{x_j\}$ to the unit
+vectors of each space induces an isomorphism from $X$ onto $c_0$, $l_p$ respectively.
+This is a result if the closed graph theorem.
+This completes the proof.\done
+
+\begin{thebibliography}{99}
+
+\bibitem{Day} M. M. Day, {\em Normed Linear Spaces}, Springer-Verlag,
+1962.
+
+\bibitem{LT} J. Lindenstrauss and L. Tzafriri, {\em Classical Banach Spaces},
+Springer-Verlag, 1973.
+
+\bibitem{paper} M. Zippin, {\em On Perfectly Homogeneous Bases in Banach
+Spaces}, Israel J. Math. {\bf 4} (1966), 255--272.
+
+\end{thebibliography}
+\end{document}
+

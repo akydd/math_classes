@@ -1,0 +1,427 @@
+\documentclass[landscape]{slides}
+\usepackage{amsmath,amsfonts}
+\title{Fourier Analysis on Coset Spaces}
+\author{Brian Forrest\\presented by Alan Kydd}
+\date{April 2, 2004}
+\pagestyle{plain}
+
+\newtheorem{defn}{Definition}
+\newtheorem{theorem}[defn]{Theorem}
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{cor}[defn]{Corollary}
+\newtheorem{lemma}[defn]{Lemma}
+
+\begin{document}
+
+\maketitle
+
+\begin{slide}
+\textbf{Introduction}
+
+$G$ a locally compact group, $H$ a closed subgroup of $G$.  We define and study
+natural analogs of the Fourier and Fourier-Stieltjes algebras for $G/H$, and show
+that when $H$ is compact, $A(G/H)$ can be used to study the nature of $G/H$ in a manner
+similar to the group case.
+
+\textbf{Table of Contents}
+\begin{enumerate}
+\item[1.] Defining $A(G/H)$ and $B(G/H)$
+\item[2.] Structure of $A(G/K)$ for compact subgroup $K$
+\item[3.] Weak amenability of $A(G)$
+\end{enumerate}
+\end{slide}
+
+%\begin{slide}
+%\textbf{Introduction}
+%$G$ a locally compact group, $B(G)$ the Fourier-Stieltjes algebra of $G$.  Bekka, Lau and Schilchting 
+%(1992) showed:
+%\begin{list}{}{\topsep 0pt \itemsep -2pt}
+%\item[1.] Self-adjoint two-sided translation invariant subalgebras of the Fourier algebra $A(G)$ can be 
+%identified with functions in $A(G)$ which are constant on cosets of some
+%compact normal subgroup $K$ of $G$
+%\item[2.] Such subalgebras are isometrically isomorphic to $A(G/K)$
+%\item[3.] Each compact normal subgroup determines a different subalgebra, and consequently
+%\item[4.] $A(G)$ reflects the structure of the quotient group $G/K$
+%\end{list}
+%\end{slide}
+
+\begin{slide}
+\textbf{Defining $A(G/H)$ and $B(G/H)$}
+
+\sc{Notation}\\
+\begin{small}
+Let $H$ be a closed subgroup of $G$.  $q : G \rightarrow G/H$ denotes the canonical quotient map.
+$\tilde{x}$ denotes the left coset $xH$.  We have an isomorphism between
+$C(G/H)$ and $C(G:H)= \{f\in C(G/H):f(xh) = f(x)\;\forall x\in G,\;h\in H\}$
+via the map $\tilde{f} \mapsto f$, where $f = \tilde{f}\circ q$.
+We denote the equivalence class of all continuous unitary
+representations of $G$ by $\Sigma_G$.  For $\pi \in \Sigma_G$, we let $A_\pi$ denote the closed linear
+span of the coefficient functions of $\pi$, and we denote the weak-* closure of $A_\pi$ by $B_\pi$.
+For $\rho$, the left regular representation of $G$ on $L_2 (G)$, $A_\rho$ is usually denoted $A(G)$.
+\end{small}
+
+\begin{defn}
+$$B(G:H) = \{u\in B(G):u(xh) = u(x)\;\forall\;x\in G,\;h \in H\},$$
+$$A(G:H) = \{u\in B(G:H): q(\text{supp}\;u)\;\text{compact in}\;G/H\}^{-\|\cdot\|_{B(G)}}.$$
+\end{defn}
+\end{slide}
+
+\begin{slide}
+%3.1
+\begin{prop}
+\begin{list}{}{\itemsep -4pt}
+\item[(i)] $B(G:H)$,$A(G:H)$ are closed subalgebras of $B(G)$.  Moreover, $A(G:H)$ is a closed ideal in 
+$B(G:H)$.
+\item[(ii)] $B(G:H)$ is unital.
+\item[(iii)] $A(G:H)\cap A(G) \neq \{0\}$ iff $H$ is compact.
+\item[(iv)] $A(G:H) = B(G:H)$ iff $G/H$ is compact.
+\end{list}
+\end{prop}
+
+We know that $A(G:H)$ is isometrically isomorphic to $A(G/H)$ when $H$ is compact
+and normal.  We can do better:
+
+%3.2
+\begin{prop}
+Let $H$ be a closed normal subgroup of $G$.  Then $B(G:H)$ and $A(G:H)$ are isometrically
+isomorphic to $B(G/H)$ and $A(G/H)$ respectively.
+\end{prop}
+\end{slide}
+
+\begin{slide}
+%3.3
+\begin{theorem}
+Let $H$ be a closed subgroup of $G$.  Then there exists a projection
+$P:B(G) \rightarrow B(G:H)$ with $\|P\| \leq 1$.
+\end{theorem}
+
+In general, $P$ does not map $A(G)$ onto $A(G:H)$.  However, for compact subgroup $K$,
+we have
+$$
+P(f)(x) = P_K (f)(x) := \int_K f(xk) dk.
+$$
+Thus we have the following corollary:
+
+%3.4
+\begin{cor}\label{3.4}
+Let $K$ be a compact subgroup of $G$.  Then $P_K$ is a continuous projection of $B(G)$ onto $B(G:K)$.
+The restriction of $P_K$ to $A(G)$ is a projection of $A(G)$ onto $A(G:K)$.
+\end{cor}
+\end{slide}
+
+\begin{slide}
+%% remarks, pg 178,179
+The analog of the Fourier Algebra for the coset space $G/H$ is usally considered to be
+the space $A_{\pi_H}$, where $\pi_H$ is the quasi-regular representation of $G$ determined
+by $H$.  This definition has two major problems.
+
+{\bf Problem I.} $A_{\pi_H}$ is in general not an algebra.
+
+For example, when $K$ is a compact subgroup, $A_{\pi_H}$ is an algebra iff $A_{\pi_H} = A_{\pi_{K_1}}$, 
+where $K_1 = \cap_{x\in G} xKx^{-1}$.  Since $K_1$ is normal, $A_{\pi_{K_1}} = A(G/K_1)$
+(Arsac, 1976).
+
+We can say more:
+
+%3.7
+\begin{prop}
+Let $K$ be a compact subgroup of $G$.  Then $A(G:K) = A_\pi$ for some $\pi \in \Sigma_G$ iff $K$
+is normal.
+\end{prop}
+
+\end{slide}
+
+\begin{slide}
+{\bf Problem II.} It is possible to have two distinct closed subgroups $H_1$, $H_2$, and yet
+$A_{\pi_{H_1}} = A_{\pi_{H_2}}$, even when these subgroups are compact (Arsac, 1976).
+
+%3.5
+\begin{prop}\label{3.5}
+Let $K_1$, $K_2$ be compact subgroups of $G$.  Then $A(G:K_1) = A(G:K_2)$ iff $K_1 = K_2$.
+If $G$ is a [SIN]-group and $H_1$, $H_2$ are closed subgroups of $G$ with $H_1 \neq H_2$, then
+$A(G:H_1) \neq A(G:H_2)$.
+\end{prop}
+
+%3.6
+\begin{cor}
+Let $K_1$, $K_2$ be compact subgroups of $G$.  Then $B(G:K_1) = B(G:K_2)$ iff $K_1 = K_2$.  If $G$
+is a [SIN]-group, then $B(G:H_1) = B(G:H_2)$ for $H_1$, $H_2$ closed subgroups of $G$, iff $H_1 = H_2$.
+\end{cor}
+{\it Proof:}
+in either case, $f_1$ as constructed above is in $B(G:K_2)$\;$[B(G:H_2)]$,
+but not in $B(G:K_1)$\;$[B(G:H_1)].\;\Box$
+\end{slide}
+
+\begin{slide}
+% remarks, pg 179
+In light of the above problems for $A_{\pi_H}$, $A(G:H)$ and $B(G:H)$ are more useful analogs for $G/H$ of the
+Fourier and  Fourier-Stieltjes algebras.
+
+\begin{defn}
+We define $A(G/H)$, the Fourier algebra of the coset space $G/H$, to be the subalgebra
+of $C(G/H)$ identified with $A(G:H)$.
+\end{defn}
+
+\begin{defn}
+We define $B(G/H)$, the Fourier-Stieltjes algebra of the coset space $G/H$, to be
+the subalgebra of $C(G/H)$ identified with $B(G:H)$.
+%Moreover, we give $B(G/H)$ the obvious norm.
+\end{defn}
+
+When $H$ is a compact subgroup, $A(G/H)$ and $B(G/H)$ have many of the same properties
+of $A(G)$, $B(G)$.
+\end{slide}
+
+\begin{slide}
+\begin{defn}
+$AP(G/H)$ is the set of all $f\in C(G/H)$ such that the set $\{ _x f: x\in G\}$ is
+relatively compact in the norm topology of $C(G/H)$ (Skantharajah, 1985).
+\end{defn}
+
+\begin{defn}
+$WAP(G/H)$ is the set of all $f\in C(G/H)$ such that the set $\{ _x f: x\in G\}$ is
+relatively compact in the weak topology of $C(G/H)$ (Skantharajah, 1985).
+\end{defn}
+
+%3.8
+\begin{prop}
+Let $H$ be a closed subgroup of $G$.  Then,
+\begin{list}{}{\topsep -4pt \itemsep -4pt}
+\item[(i)] $B(G/H)\subseteq WAP(G/H)$, and $B(G/H)\cap AP(G/H)$ is the space identified with
+$B(G:H)\cap AP(G)$.
+\item[(ii)] $B(G/H)\cap AP(G/H)$ is a complemented subalgebra of $B(G/H)$ with the Radon-Nikodym
+property.
+\end{list}
+\end{prop}
+\end{slide}
+
+\begin{slide}
+%remarks, pg 180
+Recall that $A(G)$ is sup-norm dense in $C_0 (G)$.  For a compact subgroup $K$,
+$A(G/K)$ is also sup-norm dense in $C_0 (G/K)$.  However, when $H$ is not compact,
+there may exist $f\in C_0 (G/H)$ such that $f\not\in WAP(G/H)$ (Chou).  Thus $A(G/H)$ may
+not separate the points of $G/H$.  The proof of Proposition~\ref{3.5} gives the following
+result.
+%3.9
+\begin{theorem}
+Let $G$ be a [SIN]-group with a closed subgroup $H$.  Then $A(G/H)$ separates points in $G/H$.
+\end{theorem}
+\end{slide}
+
+\begin{slide}
+This next proposition extends a result of Herz (1973).
+
+%3.10
+\begin{prop}
+Let $K$ be a compact subgroup of $G$.  Let $H$ be a closed subgroup of $G$ such that $K\subseteq H$.
+Then every $\tilde{u} \in A(H/K)$ extends to a function $\tilde{u}_1 \in A(G/K)$ with
+$\|\tilde{u}\|_{A(H/K)} = \|\tilde{u}_1\|_{A(G/K)}$.
+\end{prop}
+%{\it Proof:}
+%Let $u\in A(H:K)$ be the function identified wtih $\tilde{u}$.  By Herz's result,
+%$u$ extends to some $v\in A(G)$ of equal norm.  Let $u_1 = P_K (v)$.
+%Since $\|P_K \| \leq 1$, $\tilde{u}_1$ is the desired extension.$\Box$
+
+We can extend a $u \in B(H)$ to some $v\in B(G)$ when $G$ is a [SIN]-group
+or if $H$ is normal (Cowling, Rodway, 1979).
+
+%3.11
+\begin{prop}
+Let $H$ be a closed subgroup of $G$.  Assume that either $G$ is a [SIN]-group or that $H$ is normal.
+Let $H_1$ be another closed subgroup containing $H$.  Then every $u\in B(H_1/H)$ extends to a 
+$v\in B(G/H)$ with the same norm.
+\end{prop}
+\end{slide}
+
+\begin{slide}
+\textbf{Structure of $A(G/K)$ for compact subgroup $K$}
+
+% Section 4
+\sc{Notation}\\
+\begin{small}
+%We assume we have a measure $\mu$ on $G/H$ such that for every $f\in L_1 (G)$,
+%$$
+%f(x) = \int_{G/H} \int_K f(xk) dk\;d\mu (\tilde{x}).
+%$$
+Let $\mathcal{A}$ be a semisimple commutative Banach algebra.  $\Delta (\mathcal{A})$ denotes
+the maximal ideal space of $\mathcal{A}$.  Given any closed set $A$ of $\Delta (\mathcal{A})$,
+we define the following ideals:\\
+$I(A) = \{u\in \mathcal{A}: u(x) = 0\;\forall\;x\in A\}$\\
+$j(A) = \{u\in I(A): \text{supp}\;u\;\text{is compact} \}$\\
+$J(A)=$ the norm closure of $j(A)$ in $I(A)$.\\ 
+$A$ is said to be of spectral sythesis if $I(A) = J(A)$.
+$A$ is said to be of weak spectral synthesis if for each $u\in I(A)$, there exists a positive integer $n$
+such that $u^n \in J(A)$.  We say that (weak) spectral sythesis fails if there exists a closed subset $A$
+of $\Delta(\mathcal{A})$ that is not a set of (weak) spectral synthesis.
+%\end{slide}
+
+%\begin{slide}
+\begin{defn}
+A multiplier of $\mathcal{A}$ is a linear operator $T$ on $\mathcal{A}$ for which $T(uv) = uT(v)$.
+We denote the set of all such mps by $\mathcal{M}(A)$, a Banach space with the operator norm.
+\end{defn}
+
+\begin{defn}
+Let $\mathcal{X}$ be a Banach $\mathcal{A}$-bimodule.  A derivation of $\mathcal{A}$ on $\mathcal{X}$
+is a linear map $D: \mathcal{A} \rightarrow \mathcal{X}$ such that $D(uv) = uD(v) + D(u)v$ for every
+$u$, $v \in\mathcal{A}$.
+\end{defn}
+
+\end{small}
+
+\end{slide}
+
+\begin{slide}
+%4.1
+\begin{theorem}
+$A(G/K)$ is a regular commutative Banach algebra with $\Delta A(G/K) = G/K$.
+\end{theorem}
+{\it Proof outline:}
+Let $\tilde{x}_0 \in G/K$.  $\delta_{\tilde{x}_0} (\tilde{u}) = \tilde{u}(\tilde{x}_0)$ is
+continuous multiplicative linear functional on $A(G/K)$.\\
+Suppose $\tilde{\Phi} \in \Delta(A(G/K))$.  We can identify $\tilde{\Phi}$ with $\Phi \in A(G:K)^*$.
+$A(G:K)$ is complemented in $A(G)$ by Corollary~\ref{3.4}.  Thus there exists $\Gamma \in VN(G)$
+with $P^*_K (\Phi) = \Gamma$ and $\Gamma |_{A(G:K)} = \Phi$.  $\Phi \neq 0$, so $\Gamma \neq 0$.
+It can be shown that supp$\Gamma = x_0 K$ for some $x_0 \in G$.  $x_0 K$ is a set of spectral sythesis
+for $A(G)$ (Forrest, 1992), therefor $\Gamma$ is the weak-* norm limit of $\Psi = \sum_{i=1}^n a_i L_{x_i}$,
+where $x_i \in x_0 K$.  But $L_{x_i} |_{A(G:H)} = \Phi = \delta_{\tilde{x}_0}$.
+It can be shown that the map $\tilde{x}_0 \mapsto \delta_{\tilde{x}_0}$ is a homeomorphism
+of $G/K$ onto $\Delta(A(G/K))$.$\Box$
+\end{slide}
+
+\begin{slide}
+%4.2
+\begin{theorem}\label{badlist}
+Let $G$ be a locally compact group with compact subgroup $K$.  The following are equivalent:
+\begin{list}{}{\topsep -4pt \itemsep -4pt}
+\item[(i)] $G$ is amenable
+\item[(ii)] $G/K$ is an amenable coset space
+\item[(iii)] $A(G/K)$ has a bounded approximate identity consisting of functions with compact support in $G/K$
+\item[(iv)] $A(G/K)$ weakly factorizes
+\end{list}
+\end{theorem}
+
+%4.3
+\begin{cor}
+Let $G$ be an amenable locally compact group with a compact subgroup $K$.  Then
+${\mathcal M}(A(G/K)) = B(G/K)$ and the usual norms agree.
+\end{cor}
+\end{slide}
+
+\begin{slide}
+%4.3'
+\begin{prop}
+Let $K$ be a compact subgroup of $G$.  Let $\tilde{E} \subset G/K$ be a set for which (weak)
+spectral synthesis fails in $A(G/K)$.  Then (weak) spectral synthesis fails for $q^{-1}(\tilde{E})$
+in $A(G/K)$.  In particular, if (weak) spectral synthesis fails for $A(G/K)$, then (weak)
+spectral synthesis fails for $A(G)$.
+\end{prop}
+
+%4.4
+\begin{cor}
+Let $G$ be a locally compact group for whiuch $A(G)$ admits (weak) spectral synthesis.
+Then $G$ is totally disconnected.
+\end{cor}
+
+%4.5
+\begin{cor}
+Let $G$ be a locally compact group with a compact subgroup $K$.  Then each singleton $\{x\}
+\subset G/K$ is a set of spectral synthesis for $A(G/K)$.  Furthermore, if $G$ is amenable,
+then every finite subset of $G/K$ is a set of spectral synthesis.
+\end{cor}
+\end{slide}
+
+\begin{slide}
+%4.6
+\begin{prop}
+Let $G$ be amenable with compact subgroup $K$.  Let $\{x_1 ,\ldots ,x_n\}$ be a finite
+subset of $G/K$.  Then $I = I_{G/K} \{x_1 ,\ldots ,x_n\}$ has a bounded approximate
+identity $\{u_\alpha\}$ in $A(G/K) \cap C_c (G/K)$.
+\end{prop}
+
+%4.7
+\begin{theorem}
+Let $K$ be a compact subgroup of $G$.  The following are equivalent:
+\begin{list}{}{\topsep -4pt \itemsep -4pt}
+\item[(i)] $G$ is amenable
+\item[(ii)] If $I$ is a cofinite ideal of $A(G/K)$, then $I=I(\{x_1 ,\ldots ,x_n\})$ where $n=\text{codim}\;(I)$
+\item[(iii)] Every cofinite ideal in $A(G/K)$ has a bounded approximate identity
+\item[(iv)] Each homomorphism of $A(G/K)$ with finite dimensional range is continuous
+\end{list}
+\end{theorem}
+\end{slide}
+
+\begin{slide}
+%4.8
+This theorem is a generalization of Forrest (1988)
+\begin{theorem}
+Let $K$ be a compact subgroup of $G$.  The following are equivalent:
+\begin{list}{}{\topsep -4pt \itemsep -4pt}
+\item[(i)] $G$ is amenable
+\item[(ii)] Every derivation from $A(G/K)$ into a Banach $A(G/K)$-bimodule is continuous.
+\end{list}
+\end{theorem}
+\end{slide}
+
+\begin{slide}
+%% Section 5
+%5.1
+\textbf{Weak amenability of $A(G)$}
+
+\begin{defn}
+A commutative Banach algebra $\mathcal{A}$ is weakly amenable if every continuous derivation
+from $\mathcal{A}$ into a commutative Banach $\mathcal{A}$-bimodule is identically zero.
+\end{defn}
+
+$A(G)$ is weakly amenable if $G$ is discrete (Forrest, 1988).  If $G$ is the rotation group
+on $\Re ^3$, then $A(G)$ is not weakly amenable (Johnson, 1994).  Very little is know about the class of groups
+$G$ for which $A(G)$ is amenable.  We show that this class contains all totally disconnected
+groups.
+\end{slide}
+
+\begin{slide}
+%5.1
+\begin{theorem}\label{5.1}
+Let $H$ be an open subgroup of $G$.  Then $A(G/H)$ is weakly amenable.
+\end{theorem}
+{\it Proof:}  Let $D: A(G/H) \rightarrow \mathcal{X}$ be a continuous derivation into a 
+commutative Banach $A(G/H)$-bimodule.  Let $\tilde{u}$ be an idempotent in $A(G/H)$.
+Then $D(\tilde{u}) = D(\tilde{u}^n) = nD(\tilde{u})$ for $n\geq 2$.  Thus $D(\tilde{u}) = 0$.
+$H$ is open, so the linear span of the idempotents is dense in $A(G/H)$.  Hence $D$ is
+identically zero.$\Box$
+
+%5.2
+\begin{lemma}\label{5.2}
+Let $G$ be totally disconnected.  Let $u\in A(G)$ and $\epsilon > 0$.  Then there
+exists an open compact subgroup $K$ and a $v\in A(G:K)$ such that $\|u-v\|_{A(G)} < \epsilon$.
+\end{lemma}
+\end{slide}
+
+\begin{slide}
+%5.3
+\begin{theorem}
+Let $G$ be disconnected.  Then $A(G)$ is weakly amenable.
+\end{theorem}
+{\it Proof:}  Let $D: A(G) \rightarrow \mathcal{X}$ be a continuous derivation into a 
+commutative Banach $A(G)$-bimodule.  Let $K$ be a compact open subgroup of $G$.  The
+restriction of $D$ to $A(G:K)$ determines a derivation of $A(G/K)$.  By Theorem~\ref{5.1},
+$D$ is zero on each $A(G:K)$.  By Lemma~\ref{5.2} each $u\in A(G)$ can be approximated
+within $\epsilon$ by some $v\in A(G:K)$ for some open compact subgroup $K$.  Thus $D=0$.
+$\Box$
+
+%5.4
+\begin{prop}
+Let $G_1$, $G_2$ be such that $A(G_i)$ is weakly amenable for $i=1,2$.  Then
+$A(G_1 \times G_2)$ is also weakly amenable.
+\end{prop}
+
+%5.5
+\begin{cor}
+Let $G=G_1 \times G_2$ where $G_1$ is abelian and $G_2$ is totally disconnected.  Then
+$A(G)$ is weakly amenable.
+\end{cor}
+\end{slide}
+
+%%end
+
+\end{document}
